@@ -1,0 +1,27 @@
+﻿body {
+}
+.body
+{
+    background:url(../../Images/BG.jpg)
+}
+.form1
+{
+    position:absolute; 
+    width: 371px; height: 305px;top:22%;left:36%;
+}
+.login
+{
+    position:absolute; font-size: x-large; color: #FFFFFF; top: 24px; left: 138px; width: 94px; height: 33px;
+}
+.zhucezhanghao
+{
+    position:absolute; top: 2px; left: 256px; width: 74px; right: 41px; margin-top: 194px; color:white;
+}
+.zhucezhanghao:hover
+{
+    color:white;
+}
+.button
+{
+    position:absolute; top: 244px; left: 43px; height: 35px; width: 285px; color: #FFFFFF;
+}

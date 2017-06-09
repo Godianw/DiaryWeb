@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+ 
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/Login.css" />
+    <script type="text/javascript" src="js/Login.js"></script>
+    
+</head>
+<body class="body" onkeydown="enter()">
+
+    <form class="form-horizontal form1" style="background:url(/Images/transparent.png);">
+        <div id="loading_div" style="position:absolute; width:115px; height: 115px;top:25%;left:36%;background:url(/Images/loading2.gif);z-index:9999;"></div>
+        <a class="login">Login</a>
+        <a class="zhucezhanghao" href="register.html">注册账号</a>
+        <div class="form-group" style="top:70px;">
+            <input type="text" class="form-control" id="user"
+                   placeholder="账号" maxlength="20" />
+            <i class="icon-user"></i>
+        </div>
+
+        <div class="form-group" style="top:80px">
+            <input type="password" class="form-control" id="password"
+                   placeholder="密码" maxlength="16" />
+            <i class="icon-lock"></i>
+        </div>
+
+        <input id="login_button" type="button" class="btn btn-default button" onclick="login()" value="登录" />
+    </form>
+
+</body>
+</html>

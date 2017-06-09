@@ -1,0 +1,45 @@
+﻿body {
+}
+.body
+{
+    background:url(/Images/zhucebeijing.jpg)
+}
+.form
+{
+    position:absolute;
+     width: 500px; 
+     height: 350px; 
+     top:15%;
+     left:55%;
+}
+.image_zhanghao
+{
+    border-style: none; border-color: inherit;
+     border-width: medium; position:absolute; 
+     top: 80px; left: 330px; 
+      height: 25px; width: 25px;
+}
+.label_zhanghao
+{
+    position:absolute; top: 82px; left: 365px; color: #FFFFFF; font-family: 楷体;
+}
+.label_password
+{
+    position:absolute;top:160px;left:365px;color: #FFFFFF; font-family: 楷体;
+}
+.label_again
+{
+    position:absolute;top:240px;left:365px;color: #FFFFFF; font-family: 楷体;
+}
+.rule
+{
+    position:absolute; top: 270px; left: 43px; width: 20px; height:15px;
+}
+.tiaokuan
+{
+    position:absolute; top: 271px; left: 73px; color: #FFFFFF;
+}
+.button
+{
+    position:absolute; top: 306px; left: 127px; height: 35px; width: 125px; color: #FFFFFF;
+}

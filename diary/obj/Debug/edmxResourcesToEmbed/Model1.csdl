@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DiaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="View_Diary" EntityType="DiaryModel.View_Diary" />
+    <EntitySet Name="Diary" EntityType="DiaryModel.Diary" />
+    <EntitySet Name="Users" EntityType="DiaryModel.Users" />
+    <AssociationSet Name="FK_Diary_Users_id" Association="DiaryModel.FK_Diary_Users_id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Diary" EntitySet="Diary" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="View_Diary">
+    <Key>
+      <PropertyRef Name="diary_id" />
+      <PropertyRef Name="diary_title" />
+      <PropertyRef Name="diary_content" />
+      <PropertyRef Name="diary_subtime" />
+      <PropertyRef Name="user_name" />
+    </Key>
+    <Property Name="diary_id" Type="Int32" Nullable="false" />
+    <Property Name="diary_title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="diary_content" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="diary_subtime" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Diary">
+    <Key>
+      <PropertyRef Name="diary_id" />
+    </Key>
+    <Property Name="diary_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="diary_title" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="diary_content" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="diary_subtime" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="diary_author_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="DiaryModel.FK_Diary_Users_id" FromRole="Diary" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="user_password" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="qq" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="wechat" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sex" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="hometown" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="introduce" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Diary" Relationship="DiaryModel.FK_Diary_Users_id" FromRole="Users" ToRole="Diary" />
+  </EntityType>
+  <Association Name="FK_Diary_Users_id">
+    <End Type="DiaryModel.Users" Role="Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="DiaryModel.Diary" Role="Diary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Diary">
+        <PropertyRef Name="diary_author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

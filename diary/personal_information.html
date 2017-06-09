@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+    <script src="bootstrap/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="bootstrap/js/bootstrap-datetimepicker.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/menu.css" />
+    <script src="js/personal_information.js"></script>
+
+</head>
+    
+<body>
+    <!--页眉-->
+    <nav class="navbar navbar-fixed-top" role="navigation">
+
+        <div class="container-fluid" style="background-color:white;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target="#example-navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="log.html">
+                    <img src="Images/logo.png" style="width:35px; height:25px;" />
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li id="personalInfo">
+                        <div style="padding-top:10px;">
+                            &nbsp;<span class="glyphicon glyphicon-user" style="color:gray;"></span>
+                            <a href="personal_information.html">
+
+                                <span id="username"></span>
+                            </a>
+
+                        </div>
+
+                        &nbsp;&nbsp;
+                    </li>
+                    <li id="homePageBtn">
+                        <a href="log.html">
+                            <span class="glyphicon glyphicon-home"></span> 首页
+                        </a>
+                    </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#modify_Pass" href="">
+                            <span class="glyphicon glyphicon-wrench"></span> 修改密码
+                        </a>
+                    </li>
+                    <li id="logoutDialogBtn" onclick="Logout()">
+                        <a data-toggle="modal" href="#">
+                            <span class="glyphicon glyphicon-log-out"></span> 注销
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </nav>
+
+    <!-- 修改密码窗口 -->
+    <div id="modify_Pass" class="modal fade" data-backdrop="static" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- body -->
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal" onclick="clearInput()">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <!-- title -->
+                <div class="modal-title">
+                    <h1 class="text-center">修改密码</h1>
+                </div>
+
+                <!-- body -->
+                <div class="modal-body row">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="oldPassword"
+                                   name="oldPassword" placeholder="旧密码" />
+                            <i class="icon-lock"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="newPassword"
+                                   name="newPassword" placeholder="新密码，6~16位字符" />
+                            <i class="icon-lock"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="newPassword2"
+                                   name="newPassword2" placeholder="再次输入密码" />
+                            <i class="icon-lock"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <button id="registerBtn" class="btn btn-success" type="button"
+                                    onclick="setNewPwd()">
+                                确认修改
+                            </button>
+                            <button class="btn btn-danger" data-dismiss="modal"
+                                    onclick="clearInput()">
+                                取消
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <div class="bg" style="height:200px">
+        <div class="page-header container">
+            <h1 style="color:white">
+                印迹
+
+            </h1>
+        </div>
+        <div class="container" style="font-size:medium">
+            <small style="color:snow">网络私人日志</small>
+        </div>
+    </div>
+
+    <br /><br />
+
+    <form>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-11  col-sm-11  col-md-11  " style="width:100%;height:248px; background-color:white;border-radius:8px 8px 8px 8px;-webkit-box-shadow: 3px 3px 3px; text-align: center;">
+                    <span style="font-family: 华文彩云; font-size: x-large">个人信息</span>
+
+                    <center>
+                        <table style="border-collapse:separate; border-spacing:0px 8px;">
+                            <tr>
+                                <td>邮箱：</td>
+                                <td><input id="email" type="email" class="form-control" /></td>
+                                <td>QQ：</td>
+                                <td><input id="qq" type="text" class="form-control" /></td>
+                                <td>微信：</td>
+                                <td><input id="wechat" type="text" class="form-control" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>生日：</td>
+                                <td><input id="birthday" type="text" class="form-control" /></td>
+                                <td>性别：</td>
+                                <td><input id="sex" type="text" class="form-control" /></td>
+                                <td>故乡：</td>
+                                <td><input id="hometown" type="text" class="form-control" /></td>
+                            </tr>
+
+                            <tr>
+                                <td>个人介绍：</td>
+                                <td colspan="5"><textarea id="introduce" class="form-control" rows="3"></textarea> </td>
+
+                            </tr>
+                            <tr>
+                                <td colspan="6" style="text-align:center">
+                                    <input type="button" class="btn btn-default" onclick="upload()" value="保存" />
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="button" class="btn btn-default" value="取消" />
+                                </td>
+                            </tr>
+                        </table>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </form>
+    <br />
+    <!-- 页脚-->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <h6>Copyright &copy;印迹</h6>
+                </div>
+
+                <div class="col-sm-4">
+                    <h6>关于我们</h6>
+                    <p>
+                        计算机学院/2017年5月19日
+                    </p>
+                </div>
+
+                <div class="col-sm-2">
+                    <h6>导航</h6>
+                    <ul class="unstyled">
+                        <li><a href="log.html">主页</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-2">
+                    <h6>Follow us</h6>
+                    <ul class="unstyled">
+                        <li><a href="#">微博</a></li>
+                        <li><a href="#">微信</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-2">
+                    <h6>本网站由<span class="glyphicon glyphicon-heart"></span>myxs制作</h6>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--页脚结束-->
+
+</body>
+</html>

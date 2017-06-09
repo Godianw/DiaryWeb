@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DiaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Diary">
+    <Key>
+      <PropertyRef Name="diary_id" />
+    </Key>
+    <Property Name="diary_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="diary_title" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="diary_content" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="diary_subtime" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="diary_author_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="user_password" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" />
+    <Property Name="qq" Type="varchar" MaxLength="11" />
+    <Property Name="wechat" Type="nvarchar" MaxLength="20" />
+    <Property Name="birthday" Type="varchar" MaxLength="10" />
+    <Property Name="sex" Type="nvarchar" MaxLength="1" />
+    <Property Name="hometown" Type="nvarchar" MaxLength="20" />
+    <Property Name="introduce" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“Diary.dbo.View_Diary”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="View_Diary">
+    <Key>
+      <PropertyRef Name="diary_id" />
+      <PropertyRef Name="diary_title" />
+      <PropertyRef Name="diary_content" />
+      <PropertyRef Name="diary_subtime" />
+      <PropertyRef Name="user_name" />
+    </Key>
+    <Property Name="diary_id" Type="int" Nullable="false" />
+    <Property Name="diary_title" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="diary_content" Type="nvarchar" MaxLength="2000" Nullable="false" />
+    <Property Name="diary_subtime" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Diary_Users_id">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Diary" Type="Self.Diary" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="user_id" />
+      </Principal>
+      <Dependent Role="Diary">
+        <PropertyRef Name="diary_author_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DiaryModelStoreContainer">
+    <EntitySet Name="Diary" EntityType="Self.Diary" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="View_Diary" EntityType="Self.View_Diary" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_Diary].[diary_id] AS [diary_id], 
+    [View_Diary].[diary_title] AS [diary_title], 
+    [View_Diary].[diary_content] AS [diary_content], 
+    [View_Diary].[diary_subtime] AS [diary_subtime], 
+    [View_Diary].[user_name] AS [user_name]
+    FROM [dbo].[View_Diary] AS [View_Diary]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Diary_Users_id" Association="Self.FK_Diary_Users_id">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Diary" EntitySet="Diary" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

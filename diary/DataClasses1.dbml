@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Diary" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.;Initial Catalog=Diary;Persist Security Info=True;User ID=STUDBadmin" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DiaryConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Diary" Member="Diary_Linq">
+    <Type Name="Diary_Linq">
+      <Column Name="diary_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="diary_title" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="diary_content" Type="System.String" DbType="NVarChar(2000) NOT NULL" CanBeNull="false" />
+      <Column Name="diary_subtime" Type="System.String" DbType="Char(10) NOT NULL" CanBeNull="false" />
+      <Column Name="diary_author_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Users_Diary" Member="Users_Linq" ThisKey="diary_author_id" OtherKey="user_id" Type="Users_Linq" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users_Linq">
+    <Type Name="Users_Linq">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_name" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="user_password" Type="System.String" DbType="VarChar(16) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="qq" Type="System.String" DbType="VarChar(11)" CanBeNull="true" />
+      <Column Name="wechat" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="birthday" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="sex" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="hometown" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="introduce" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="Users_Diary" Member="Diary_Linq" ThisKey="user_id" OtherKey="diary_author_id" Type="Diary_Linq" />
+    </Type>
+  </Table>
+</Database>

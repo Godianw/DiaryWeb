@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DiaryModelStoreContainer" CdmEntityContainer="DiaryEntities">
+    <EntitySetMapping Name="View_Diary">
+      <EntityTypeMapping TypeName="DiaryModel.View_Diary">
+        <MappingFragment StoreEntitySet="View_Diary">
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="diary_subtime" ColumnName="diary_subtime" />
+          <ScalarProperty Name="diary_content" ColumnName="diary_content" />
+          <ScalarProperty Name="diary_title" ColumnName="diary_title" />
+          <ScalarProperty Name="diary_id" ColumnName="diary_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Diary">
+      <EntityTypeMapping TypeName="DiaryModel.Diary">
+        <MappingFragment StoreEntitySet="Diary">
+          <ScalarProperty Name="diary_author_id" ColumnName="diary_author_id" />
+          <ScalarProperty Name="diary_subtime" ColumnName="diary_subtime" />
+          <ScalarProperty Name="diary_content" ColumnName="diary_content" />
+          <ScalarProperty Name="diary_title" ColumnName="diary_title" />
+          <ScalarProperty Name="diary_id" ColumnName="diary_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DiaryModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="introduce" ColumnName="introduce" />
+          <ScalarProperty Name="hometown" ColumnName="hometown" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="birthday" ColumnName="birthday" />
+          <ScalarProperty Name="wechat" ColumnName="wechat" />
+          <ScalarProperty Name="qq" ColumnName="qq" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="user_password" ColumnName="user_password" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="jquery/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="bootstarp/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstarp/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="bootstarp/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="bootstarp/js/bootstrap.min.js"></script>
+
+    <!-- Custom -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/register.css" />
+    <script type="text/javascript" src="js/register.js"></script>
+
+</head>
+<body class="body">
+     <form class="form-horizontal form" style="background:url(/Images/transparent.png); ">
+             <a style="position:absolute; font-size: x-large; color: #FFFFFF; top: 24px; left: 138px; width: 94px; height: 33px;">注册</a> 
+            
+            <div class="form-group" style="top:70px;">
+                <input type="text" class="form-control" id="user" maxlength="20"
+                    placeholder="账号" style="width: 285px;" onblur="zhanghao()" />
+                <i class="icon-user"></i>
+            </div>
+            <img class="image_zhanghao" alt="" id="image_zhanghao" src="/Images/touming.png"  />
+            <label id="label_zhanghao" class="label_zhanghao">6~20个字符</label>
+             <div class="form-group" style="top:80px">
+                <input type="password" class="form-control" id="password" maxlength="16" 
+                 style="width: 285px;"    placeholder="密码" onblur="mima()" />
+                <i class="icon-lock"></i>
+            </div>
+            <label id="label_password" class="label_password">6~16个字符</label>
+
+             <div class="form-group" style="top:90px">
+                <input type="password" class="form-control" id="password_again" maxlength="16"
+                 style="width: 285px;"    placeholder="重新输入密码" onblur="again()" />
+                <i class="icon-lock"></i>
+            </div>
+
+             <label id="label_again" class="label_again"></label>
+
+            <input id="rule" type="checkbox" class="rule"/>
+            <span class="tiaokuan">同意"服务条款"和"隐私权相关政策"</span>
+
+            <input type="button" class="btn btn-default button" onclick="register()" value="立即注册" />
+        </form>
+</body>
+</html>
